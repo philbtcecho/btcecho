@@ -1,0 +1,12 @@
+plot_rendite <-
+function(returns,portf,returns_safe,date_margin,label,legend_pos){
+  plot(100*merge(cumsum(btcecho::get_portf_dev(returns,portf,date_margin))-as.numeric(btcecho::get_portf_dev(returns,portf,date_margin)[1]),
+                 cumsum(returns_safe[date_margin,"BTC"])-as.numeric(returns_safe[date_margin,"BTC"]),
+                 cumsum(returns_safe[date_margin,"ETH"])-as.numeric(returns_safe[date_margin,"ETH"]),
+                 cumsum(returns_safe[date_margin,"XRP"])-as.numeric(returns_safe[date_margin,"XRP"])), 
+       lwd=c(3,1.5,1.5,1.5), main="Tägliche Rendite in Prozent",
+       yaxis.right = F,major.ticks = 10, col=c("dark blue","red","blue","green4"),grid.ticks.on = 10)
+  addLegend(legend_pos, on=1, legend.names = c(label,"Bitcoin","Ethrereum","XRP"),          
+            lty=1, lwd=c(3,1.5,1.5,1.5),col=c("dark blue","red","blue","green4"),bty="o")
+  
+}
