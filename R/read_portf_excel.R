@@ -11,6 +11,7 @@
 #'
 #' @author Philipp Giese
 #' @return A time series with portfolio development
+#' @export
 #' @examples
 #' calculate_gains(calculate_price("CCCAGG","BTC","USD",7))
 #'

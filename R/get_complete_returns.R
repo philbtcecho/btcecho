@@ -10,14 +10,15 @@
 #'
 #' @author Philipp Giese
 #' @return A time series with portfolio development
+#' @export
 #' @examples
 #' data<-sapply(c("bitcoin","litecoin"),FUN=function(X) get_all_data_cg(X))
 #' get_sel_data_matrix_cg(data,1)
 
 get_complete_returns <-
 function(portf,returns){
-  dates<-c(index(portf), Sys.Date())
-  dates_complete<-seq(as.Date(index(portf)[1]), Sys.Date(),1)
+  dates<-c(zoo::index(portf), Sys.Date())
+  dates_complete<-seq(as.Date(zoo::index(portf)[1]), Sys.Date(),1)
   rendite_safe<-xts::xts(rep(0,length(dates_complete)),order.by = dates_complete)
   for(x in 2:length(dates)){
     if(x==length(dates))

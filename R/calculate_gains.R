@@ -13,5 +13,5 @@
 
 calculate_gains <-
 function(data){
-    try(return(log(data$close/data$open)))
+    try(return(TTR::ROC(data,na.pad = F,type="discrete")))
   }

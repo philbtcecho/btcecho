@@ -17,8 +17,9 @@
 
 plot_rendite_artikel <-
 function(date_start,returns_safe,portf,rendite,label){
-  dates<-c(index(portf), Sys.Date())
-  test<-merge(returns_safe[paste(dates[1],"/",dates[x]-1,sep=""),c("BTC","ETH","XRP")],rendite[paste(dates[1],"/",dates[x]-1,sep="")])
+  dates<-c(zoo::index(portf), Sys.Date())
+  test<-merge(returns_safe[paste(dates[1],"/",dates[x]-1,sep=""),c("BTC","ETH","XRP")],
+              rendite[paste(dates[1],"/",dates[x]-1,sep="")])
   for(i in 1:ncol(test))
     test[date_start,i]<-exp(cumsum(test[date_start,i])-as.numeric(test[gsub("/","",date_start),i]))-1
 

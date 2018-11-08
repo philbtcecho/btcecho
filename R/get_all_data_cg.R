@@ -7,10 +7,11 @@
 #'
 #' @author Philipp Giese
 #' @return A list of time series with price, market cap and volume
+#' @export
 #' @examples
 #' get_all_data_cg("bitcoin"))
 
 get_all_data_cg <-
 function(coin){
-  try(return(read_json(paste("https://api.coingecko.com/api/v3/coins/",coin,"/market_chart?vs_currency=usd&days=max",sep=""), simplifyVector = T)))
+  try(return(jsonlite::read_json(paste("https://api.coingecko.com/api/v3/coins/",coin,"/market_chart?vs_currency=usd&days=max",sep=""), simplifyVector = T)))
 }
