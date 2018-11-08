@@ -16,12 +16,14 @@
 #' portf_safe<-c(0.3,0.4,0.3)
 
 plot_rendite_artikel <-
-function(date_start,returns_safe,portf,rendite,label){
-  dates<-c(zoo::index(portf), Sys.Date())
-  test<-merge(returns_safe[paste(dates[1],"/",dates[x]-1,sep=""),c("BTC","ETH","XRP")],
-              rendite[paste(dates[1],"/",dates[x]-1,sep="")])
-  for(i in 1:ncol(test))
-    test[date_start,i]<-exp(cumsum(test[date_start,i])-as.numeric(test[gsub("/","",date_start),i]))-1
+  function(date_start,returns_safe,portf,rendite,label){
+    dates<-c(zoo::index(portf), Sys.Date())
+    for (x in seq(2,length(dates),1)) {
+      test<-merge(returns_safe[paste(dates[1],"/",dates[x]-1,sep=""),c("BTC","ETH","XRP")],
+                  rendite[paste(dates[1],"/",dates[x]-1,sep="")])}
+    for(i in 1:ncol(test))
+      test[date_start,i]<-exp(cumsum(test[date_start,i])-as.numeric(test[gsub("/","",date_start),i]))-1
 
-  plot(100*test[date_start], lwd=c(1.5,1.5,1.5,3), main=label, col=c("black","red","dark green","dark blue"),major.ticks = 7)
-}
+    plot(100*test[date_start], lwd=c(1.5,1.5,1.5,3), main=label, col=c("black","red","dark green","dark blue"),major.ticks = 7)
+  }
+
