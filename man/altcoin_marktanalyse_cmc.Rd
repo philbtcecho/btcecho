@@ -4,7 +4,7 @@
 \alias{altcoin_marktanalyse_cmc}
 \title{Show details about last week}
 \usage{
-altcoin_marktanalyse_cmc()
+altcoin_marktanalyse_cmc(circulating = F)
 }
 \value{
 A list with means, the winners, the losers, details about the top 10
