@@ -22,5 +22,5 @@
 port_update <-
 function(date_margin,returns,offset,portfolio){
   min_portf<-portfolio/(offset+1)
-  PerformanceAnalytics::portfolio.optim(returns[date_margin,],reslow = min_portf)
+  tseries::portfolio.optim(returns[date_margin,],reslow = min_portf)
 }
