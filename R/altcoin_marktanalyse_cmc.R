@@ -10,7 +10,7 @@
 #' altcoin_marktanalyse_cmc()
 
 altcoin_marktanalyse_cmc <-
-function(circulating = F){
+function(circulating = F, number = 10){
   global<-jsonlite::read_json("https://api.coinmarketcap.com/v1/global/?convert=usd",simplifyVector = T)
   test_all<-jsonlite::read_json("https://api.coinmarketcap.com/v1/ticker/?convert=usd&limit=100", simplifyVector = T)
   data_all<-test_all[c(2,5,8,10,14)]
@@ -21,8 +21,8 @@ function(circulating = F){
   data_all$price_usd<-round(as.numeric(data_all$price_usd),digits = 2)
   data_all<-data_all[order(data_all$market_cap_usd,decreasing = T),]
   data_100<-data_all[order(as.numeric(data_all$percent_change_7d),decreasing = T),]
-  data_10<-data_all[1:10,]
-  differences<-data.frame(data_all$name[1:11],data_all$name[2:12],(as.numeric(data_all$market_cap_usd[1:11])/as.numeric(data_all$market_cap_usd[2:12])-1)*100)
+  data_10<-data_all[1:number,]
+  differences<-data.frame(data_all$name[1:(number+1)],data_all$name[2:(number+2)],(as.numeric(data_all$market_cap_usd[1:(number+1)])/as.numeric(data_all$market_cap_usd[2:(number+2)])-1)*100)
   names(differences)<-c("currh","currl","diff")
 
   test<-list(mean(as.numeric(data_10$percent_change_7d)),
