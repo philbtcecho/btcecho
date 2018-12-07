@@ -26,6 +26,6 @@ plot_rendite_artikel <-
       test[date_start,i]<-test[date_start,i]-as.numeric(test[gsub("/","",date_start),i])
     }
 
-    plot(100*(test[date_start]), lwd=c(1.5,1.5,1.5,3), main=label, col=c("black","red","dark green","dark blue"),major.ticks = 7)
+    plot(100*(test[date_start]), lwd=c(1.5,1.5,1.5,3), main=label, col=c("black","red","dark green","dark blue"))
   }
 
