@@ -30,7 +30,7 @@ function(returns,portfolio,returns_safe,date_margin,label,legend_pos){
                  cumsum(returns_safe[date_margin,"ETH"])-as.numeric(returns_safe[date_margin,"ETH"])[1],
                  cumsum(returns_safe[date_margin,"XRP"])-as.numeric(returns_safe[date_margin,"XRP"])[1]),
        lwd=c(3,1.5,1.5,1.5), main="Tägliche Rendite in Prozent",
-       yaxis.right = F,major.ticks = 10, col=c("dark blue","red","blue","green4"),grid.ticks.on = 10)
-  return(addLegend(legend_pos, on=1, legend.names = c(label,"Bitcoin","Ethrereum","XRP"),
+       yaxis.right = F, col=c("dark blue","red","blue","green4"))
+  return(addLegend(legend_pos, on=1, legend.names = c(label,"Bitcoin","Ethereum","XRP"),
             lty=1, lwd=c(3,1.5,1.5,1.5),col=c("dark blue","red","blue","green4"),bty="o"))
 }

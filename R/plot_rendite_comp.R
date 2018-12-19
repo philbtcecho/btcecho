@@ -29,7 +29,7 @@ function(returns_safe,portf_safe,returns_medium,portf_medium,returns_risky,portf
                  cumsum(btcecho::get_portf_dev(returns_medium,portf_medium,date_margin))-as.numeric(btcecho::get_portf_dev(returns_medium,portf_medium,date_margin)[1]),
                  cumsum(btcecho::get_portf_dev(returns_risky,portf_risky,date_margin))-as.numeric(btcecho::get_portf_dev(returns_risky,portf_risky,date_margin)[1])),
        lwd=c(3,3,3), main="Tägliche Rendite in Prozent",
-       yaxis.right = F,major.ticks = 10, col=c("dark green","orange","red"),grid.ticks.on = 10)
+       yaxis.right = F, col=c("dark green","orange","red"))
   addLegend(legend_pos, on=1, legend.names = c("Konservativ","Medium","Risiko"),
             lty=1, lwd=c(3,3,3),col=c("dark green","orange","red"),bty="o")
 
