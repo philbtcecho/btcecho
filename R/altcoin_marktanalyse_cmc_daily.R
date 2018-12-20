@@ -11,7 +11,6 @@
 
 altcoin_marktanalyse_cmc_daily <-
 function(number,file_path){
-    global<-jsonlite::read_json("https://api.coinmarketcap.com/v1/global/?convert=usd",simplifyVector = T)
     test_all<-jsonlite::read_json(paste("https://api.coinmarketcap.com/v1/ticker/?convert=usd&limit=",number,sep=""), simplifyVector = T)
     data_all<-test_all[c(2,4,5,7,8,13)]
     data_all$market_cap_usd<-round(as.numeric(data_all$market_cap_usd)/10^9, digits=2)
@@ -33,11 +32,11 @@ function(number,file_path){
             sentiment<-"bearish"
         else
           sentiment<-"neutral"
-      texte_final[i]<-paste(btcecho::get_text(data_all[i,],sentiment,texte),
+      texte_final[i]<-paste(btcecho:::get_text(data_all[i,],sentiment,texte),
                             gsub("UU",data_all$price_usd[i],
                                  sample(as.character(texte$description[texte$sentiment=="price"]),1,
                                         replace = T)))
     }
     texte_final
-    return(cat(paste(texte_final,collapse = "\n\n",sep=" ")))
+    paste(texte_final,collapse = "\n\n",sep=" ")
   }
