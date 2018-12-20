@@ -10,7 +10,7 @@
 #' altcoin_marktanalyse_cmc()
 
 altcoin_marktanalyse_cmc <-
-function(circulating = F, number = 10, nmax = 3000, makef = T){
+function(circulating = T, number = 10, nmax = 3000, makef = T){
   global<-jsonlite::read_json("https://api.coinmarketcap.com/v1/global/?convert=usd",simplifyVector = T)
   test_all<-jsonlite::read_json(paste("https://api.coinmarketcap.com/v1/ticker/?convert=usd&limit=",nmax,sep=""), simplifyVector = T)
   data_all<-test_all[c(2,3,5,8,10,14)]
