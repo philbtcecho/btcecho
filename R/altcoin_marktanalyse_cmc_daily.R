@@ -22,6 +22,7 @@ altcoin_marktanalyse_cmc_daily <-
     data_all$market_cap_usd<-round(as.numeric(data_all$market_cap_usd)/10^9, digits=2)
     data_all$`24h_volume_usd`<-round(as.numeric(data_all$`24h_volume_usd`)/10^6, digits=2)
     data_all$price_usd<-round(as.numeric(data_all$price_usd),digits = 2)
+    data_all$links<-sapply(1:number,FUN=function(X) paste("<a href='http://www.btc-echo.de/",gsub(" ","-",tolower(data_all$name[X])),"-kurs'>",data_all$name[X],"</a>",sep=""))
     texte_final<-rep(number+1)
     for (i in 1:number){
       if (as.numeric(data_all$percent_change_24h[i])>2)
@@ -37,11 +38,12 @@ altcoin_marktanalyse_cmc_daily <-
               sentiment<-"bearish"
             else
               sentiment<-"neutral"
-            texte_final[i+1]<-paste(btcecho:::get_text(data_all[i,],sentiment,texte),
-                                    gsub("UU",data_all$price_usd[i],
+            texte_final[i+1]<-paste(get_text(data_all[i,],sentiment,texte),
+                                    gsub("UU",sprintf("%.2f", round(data_all$price_usd[i],2)),
                                          sample(as.character(texte$description[texte$sentiment=="price"]),1,
                                                 replace = T)))
     }
-    texte_final[1]<-texte_header
-    paste(texte_final,collapse = "\n\n",sep=" ")
+    texte_final[1]<-paste(texte_header,"\n\n",sep="")
+
+    return(c(paste(texte_final,collapse = "\n\n",sep=" "),mean(as.numeric(data_all$percent_change_24h))))
   }
