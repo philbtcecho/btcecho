@@ -1,10 +1,10 @@
-#' Read price, market cap or volume from list of currency data
+#' Read price, market cap or volume from matrix of currency data
 #'
 #' To get the price, market cap or volume für one specific crypto-
 #' curreny is easy, however, applying this selection to a list of
 #' xts-triples is more demanding.
 #'
-#' @param data a list of cryptocurrencies
+#' @param data a matrix of cryptocurrencies
 #' @param sel data selection. 1 for price, 2 for market cap and
 #' 3 for volume
 #'

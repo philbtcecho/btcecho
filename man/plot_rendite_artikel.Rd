@@ -4,7 +4,8 @@
 \alias{plot_rendite_artikel}
 \title{Plot Returns of different portfolios}
 \usage{
-plot_rendite_artikel(date_start, returns_safe, portf, rendite, label)
+plot_rendite_artikel(date_start, returns_safe, portf, rendite, label,
+  thick1 = 2, thick2 = 4)
 }
 \arguments{
 \item{date_start}{A xts with several columns consisting of data}
@@ -16,6 +17,10 @@ plot_rendite_artikel(date_start, returns_safe, portf, rendite, label)
 \item{rendite}{A vector defining the portfolio weights}
 
 \item{label}{A xts with several columns consisting of data}
+
+\item{thick1}{thickness of normal lines}
+
+\item{thick2}{thickness of portfolio}
 }
 \value{
 A plot with development of tree portfolios

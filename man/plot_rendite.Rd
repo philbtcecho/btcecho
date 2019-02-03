@@ -5,7 +5,7 @@
 \title{Plot Profits}
 \usage{
 plot_rendite(returns, portfolio, returns_safe, date_margin, label,
-  legend_pos)
+  legend_pos, lwd_thick, lwd_thin)
 }
 \arguments{
 \item{returns}{A xts with several columns consisting of data}
@@ -17,6 +17,10 @@ plot_rendite(returns, portfolio, returns_safe, date_margin, label,
 \item{label}{How to define the examined portfolio within the legend}
 
 \item{legend_pos}{where to set the legend}
+
+\item{lwd_tick}{thickness of main line}
+
+\item{lwd_tin}{thickness of other lines}
 }
 \value{
 A xts with development of portfolio

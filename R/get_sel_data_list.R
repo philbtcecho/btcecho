@@ -13,7 +13,7 @@
 #' @export
 #' @examples
 #' data<-sapply(c("bitcoin","litecoin"),FUN=function(X) get_all_data_cg(X))
-#' get_sel_data_matrix_cg(data,1)
+#' get_sel_data_list_cg(data,1)
 
 get_sel_data_list_cg <-
 function(data,sel){

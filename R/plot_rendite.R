@@ -8,6 +8,8 @@
 #' @param date_margin A string specifying the start- and enddates
 #' @param label How to define the examined portfolio within the legend
 #' @param legend_pos where to set the legend
+#' @param lwd_tick thickness of main line
+#' @param lwd_tin thickness of other lines
 #'
 #' @author Philipp Giese
 #' @return A xts with development of portfolio
@@ -18,7 +20,7 @@
 #' get_portf_dev(data,portf,"201810/")
 
 plot_rendite <-
-function(returns,portfolio,returns_safe,date_margin,label,legend_pos){
+function(returns,portfolio,returns_safe,date_margin,label,legend_pos,lwd_thick,lwd_thin){
   perform_safe<-data.frame(as.character(colnames(returns_safe[,c(1,6,5)])),
                            sapply(c(1,6,5),FUN=function(X) mean(returns_safe[date_margin,X]*100)),
                            sapply(c(1,6,5),FUN=function(X) sd(returns_safe[date_margin,X]*100)))
@@ -29,8 +31,8 @@ function(returns,portfolio,returns_safe,date_margin,label,legend_pos){
                  cumsum(returns_safe[date_margin,"BTC"])-as.numeric(returns_safe[date_margin,"BTC"])[1],
                  cumsum(returns_safe[date_margin,"ETH"])-as.numeric(returns_safe[date_margin,"ETH"])[1],
                  cumsum(returns_safe[date_margin,"XRP"])-as.numeric(returns_safe[date_margin,"XRP"])[1]),
-       lwd=c(3,1.5,1.5,1.5), main="Tägliche Rendite in Prozent",
+       lwd=c(lwd_thick,lwd_thin,lwd_thin,lwd_thin), main="Tägliche Rendite in Prozent",
        yaxis.right = F, col=c("dark blue","red","blue","green4"))
   return(addLegend(legend_pos, on=1, legend.names = c(label,"Bitcoin","Ethereum","XRP"),
-            lty=1, lwd=c(3,1.5,1.5,1.5),col=c("dark blue","red","blue","green4"),bty="o"))
+            lty=1, lwd=c(lwd_thick,lwd_thin,lwd_thin,lwd_thin),col=c("dark blue","red","blue","green4"),bty="o"))
 }
