@@ -18,7 +18,7 @@
 #' portf_safe<-c(0.3,0.4,0.3)
 
 plot_rendite_artikel <-
-  function(date_start,returns_safe,portf,rendite,label, thick1=2, thick2=4){
+  function(date_start,returns_safe,portf,rendite,label, thick1=2, thick2=4,yl){
     dates<-c(zoo::index(portf), Sys.Date())
     for (x in seq(2,length(dates),1)) {
       test<-merge(returns_safe[paste(dates[1],"/",dates[x]-1,sep=""),c("BTC","ETH","XRP")],
@@ -28,6 +28,6 @@ plot_rendite_artikel <-
       test[date_start,i]<-test[date_start,i]-as.numeric(test[gsub("/","",date_start),i])
     }
 
-    plot(100*(test[date_start]), lwd=c(thick1,thick1,thick1,thick2), main=label, col=c("black","red","dark green","dark blue"))
+    plot(100*(test[date_start]), lwd=c(thick1,thick1,thick1,thick2), main=label, col=c("black","red","dark green","dark blue"),ylim=yl)
   }
 
