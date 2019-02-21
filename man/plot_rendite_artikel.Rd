@@ -5,7 +5,7 @@
 \title{Plot Returns of different portfolios}
 \usage{
 plot_rendite_artikel(date_start, returns_safe, portf, rendite, label,
-  thick1 = 2, thick2 = 4)
+  thick1 = 2, thick2 = 4, yl)
 }
 \arguments{
 \item{date_start}{A xts with several columns consisting of data}
