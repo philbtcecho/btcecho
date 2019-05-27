@@ -17,7 +17,7 @@ function(number = 10, makef = T){
     data_100$current_price<-round(as.numeric(data_100$current_price),digits = 2)
     data_100$market_cap<-round(as.numeric(data_100$market_cap)/10^9, digits = 2)
     data_10<-data_100[1:number,]
-    data_10$price_change_percentage_7d_in_currency<-round(as.numeric(data_10$price_change_percentage_7d_in_currency))
+    data_10$price_change_percentage_7d_in_currency<-round(as.numeric(data_10$price_change_percentage_7d_in_currency),digits = 1)
     differences<-data.frame(data_100$name[1:(number+1)],data_100$name[2:(number+2)],(as.numeric(data_100$market_cap[1:(number+1)])/as.numeric(data_100$market_cap[2:(number+2)])-1)*100)
     names(differences)<-c("currh","currl","diff")
     data_100<-data_100[order(as.numeric(data_100$price_change_percentage_7d_in_currency),decreasing = T),]
